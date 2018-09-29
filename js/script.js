@@ -6,6 +6,22 @@ class Stopwatch {
     this.print(this.times);
   }
 
+  // addToList() {
+  //   const List = React.createClass({
+  //     render: () => {
+  //       return (
+  //         <li>{this.print()}</li>
+  //       );
+  //     }
+  //   });
+  //   const elem = React.createElement(List);
+  //   ReactDOM.render(elem, document.querySelector('.results'));
+  // }
+
+  clearList() {
+    document.querySelector('.results').innerHTML = '';
+  }
+
   start() {
     if (!this.running) {
       this.running = true;
@@ -72,3 +88,9 @@ stopBtn.addEventListener("click", () => stopwatch.stop());
 
 let resetBtn = document.querySelector("#reset-timer");
 resetBtn.addEventListener("click", () => stopwatch.reset());
+
+let addResult = document.querySelector("#add-to-results");
+addResult.addEventListener("click", () => stopwatch.addToList());
+
+let removeResult = document.querySelector("#reset-results");
+removeResult.addEventListener("click", () => stopwatch.clearList());
