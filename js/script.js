@@ -6,18 +6,6 @@ class Stopwatch {
     this.print(this.times);
   }
 
-  // addToList() {
-  //   const List = React.createClass({
-  //     render: () => {
-  //       return (
-  //         <li>{this.print()}</li>
-  //       );
-  //     }
-  //   });
-  //   const elem = React.createElement(List);
-  //   ReactDOM.render(elem, document.querySelector('.results'));
-  // }
-
   addToList() {
     let list = document.querySelector('.results');
     let li = document.createElement('li');
@@ -88,17 +76,17 @@ function pad0(val) {
 
 const stopwatch = new Stopwatch(document.querySelector(".stopwatch"));
 
-let startBtn = document.querySelector("#start");
+const startBtn = document.querySelector("#start");
 startBtn.addEventListener("click", () => stopwatch.start());
 
-let stopBtn = document.querySelector("#stop");
+const stopBtn = document.querySelector("#stop");
 stopBtn.addEventListener("click", () => stopwatch.stop());
 
-let resetBtn = document.querySelector("#reset-timer");
+const resetBtn = document.querySelector("#reset-timer");
 resetBtn.addEventListener("click", () => stopwatch.reset());
 
-let addResult = document.querySelector("#add-to-results");
+const addResult = document.querySelector("#add-to-results");
 addResult.addEventListener("click", () => stopwatch.addToList());
 
-let removeResult = document.querySelector("#reset-results");
+const removeResult = document.querySelector("#reset-results");
 removeResult.addEventListener("click", () => stopwatch.clearList());
