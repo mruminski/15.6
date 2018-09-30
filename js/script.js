@@ -18,6 +18,14 @@ class Stopwatch {
   //   ReactDOM.render(elem, document.querySelector('.results'));
   // }
 
+  addToList() {
+    let list = document.querySelector('.results');
+    let li = document.createElement('li');
+    li.setAttribute('class', 'result');
+    li.appendChild(document.createTextNode(this.format(this.times)));
+    list.appendChild(li);
+  }
+
   clearList() {
     document.querySelector('.results').innerHTML = '';
   }
