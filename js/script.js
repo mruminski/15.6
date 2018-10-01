@@ -96,9 +96,7 @@ class Stopwatch extends React.Component {
           {this.format()}
         </div>
         <ul className='results'>
-          <li className='result'>
-            
-          </li>
+          {this.state.results.map(i => <li className='result'>{i}</li>)}
         </ul>
       </div>
     );
