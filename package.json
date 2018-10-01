@@ -5,8 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "http-server -p 3000 ./",
-    "babel-conv": "babel script.js --watch --out-file script-compiled.js"
+    "build": "babel js/script.js --watch --out-file js/script-compiled.js",
+    "sass": "node-sass --output-style compact -o css sass",
+    "sassprefixer": "onchange -d 100 sass/*.scss -- npm-run-all sass",
+    "start": "http-server -p 3000 ./"
   },
   "repository": {
     "type": "git",
