@@ -6,15 +6,16 @@ class Stopwatch extends React.Component {
       miliseconds: 0,
       seconds: 0,
       minutes: 0,
+      results: []
     }
   }
 
   addToList() {
-
+    this.state.results.push(this.format());
   }
 
   clearList() {
-    
+    this.setState({results: []});
   }
 
   start() {
