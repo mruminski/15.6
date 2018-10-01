@@ -14,7 +14,7 @@ class Stopwatch extends React.Component {
   }
 
   clearList() {
-    document.querySelector('.results').innerHTML = '';
+    
   }
 
   start() {
@@ -50,10 +50,6 @@ class Stopwatch extends React.Component {
     this.setState({minutes: this.state.minutes = 0});
     this.setState({seconds: this.state.seconds = 0});
     this.setState({miliseconds: this.state.miliseconds = 0});
-  }
-
-  print() {
-    this.display.innerText = this.format(this.times);
   }
 
   format() {
