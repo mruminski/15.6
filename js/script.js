@@ -1,4 +1,4 @@
-class Stopwatch extends React.Component {
+class App extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -15,7 +15,7 @@ class Stopwatch extends React.Component {
   }
 
   clearList() {
-    this.setState({results: []});
+    this.setState({results: this.state.results.splice(0, this.state.results)});
   }
 
   start() {
@@ -34,11 +34,11 @@ class Stopwatch extends React.Component {
     this.setState({miliseconds: this.state.miliseconds + 1});
     if (this.state.miliseconds >= 100) {
       this.setState({seconds: this.state.seconds + 1});
-      this.setState({miliseconds: this.state.miliseconds = 0});
+      this.setState({miliseconds: 0});
     }
     if (this.state.seconds >= 60) {
       this.setState({minutes: this.state.minutes + 1});
-      this.setState({seconds: this.state.seconds = 0});
+      this.setState({seconds: 0});
     }
   }
 
@@ -48,9 +48,9 @@ class Stopwatch extends React.Component {
   }
 
   reset() {
-    this.setState({minutes: this.state.minutes = 0});
-    this.setState({seconds: this.state.seconds = 0});
-    this.setState({miliseconds: this.state.miliseconds = 0});
+    this.setState({minutes: 0});
+    this.setState({seconds: 0});
+    this.setState({miliseconds: 0});
   }
 
   format() {
@@ -60,45 +60,69 @@ class Stopwatch extends React.Component {
   render() {
     return (
       <div>
-        <nav className='controls'>
-          <a
-            href='#'
-            className='controls__btn'
-            onClick={this.start.bind(this)}>
-            Start
-          </a>
-          <a
-            href='#'
-            className='controls__btn'
-            onClick={this.stop.bind(this)}>
-            Stop
-          </a>
-          <a
-            href='#'
-            className='controls__btn'
-            onClick={this.reset.bind(this)}>
-            Reset timer
-          </a>
-          <a
-            href='#'
-            className='controls__btn'
-            onClick={this.addToList.bind(this)}>
-            Add to results
-          </a>
-          <a
-            href='#'
-            className='controls__btn'
-            onClick={this.clearList.bind(this)}>
-            Reset results
-          </a>
-        </nav>
-        <div className='stopwatch'>
-          {this.format()}
-        </div>
-        <ul className='results'>
-          {this.state.results.map(i => <li className='result'>{i}</li>)}
-        </ul>
+        <Control />
+        <Stopwatch />
+        <ResultsList />        
       </div>
+    );
+  }
+}
+
+class Control extends React.Component {
+  render() {
+    return (
+      <nav className='controls'>
+        <a
+          href='#'
+          className='controls__btn'
+          onClick={this.start.bind(this)}>
+          Start
+        </a>
+        <a
+          href='#'
+          className='controls__btn'
+          onClick={this.stop.bind(this)}>
+          Stop
+        </a>
+        <a
+          href='#'
+          className='controls__btn'
+          onClick={this.reset.bind(this)}>
+          Reset timer
+        </a>
+        <a
+          href='#'
+          className='controls__btn'
+          onClick={this.addToList.bind(this)}>
+          Add to results
+        </a>
+        <a
+          href='#'
+          className='controls__btn'
+          onClick={this.clearList.bind(this)}>
+          Reset results
+        </a>
+      </nav>
+    );
+  }
+}
+
+class Stopwatch extends React.Component {
+  render() {
+    return (
+      <div className='stopwatch'>
+        {this.format()}
+      </div>
+    );
+  }
+}
+
+class ResultsList extends React.Component {
+  render() {
+    return (
+      <ul className='results'>
+        {this.state.results.map(i => <li className='result'>{i}</li>)}
+    </ul>
     );
   }
 }
@@ -112,6 +136,6 @@ function pad0(val) {
 }
 
 ReactDOM.render(
-  <Stopwatch />,
-  document.querySelector('#App')
+  <App />,
+  document.querySelector('#app')
 );
