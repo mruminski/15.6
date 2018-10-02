@@ -72,36 +72,31 @@ class Control extends React.Component {
   render() {
     return (
       <nav className='controls'>
-        <a
-          href='#'
+        <button
           className='controls__btn'
           onClick={this.start.bind(this)}>
           Start
-        </a>
-        <a
-          href='#'
+        </button>
+        <button
           className='controls__btn'
           onClick={this.stop.bind(this)}>
           Stop
-        </a>
-        <a
-          href='#'
+        </button>
+        <button
           className='controls__btn'
           onClick={this.reset.bind(this)}>
           Reset timer
-        </a>
-        <a
-          href='#'
+        </button>
+        <button
           className='controls__btn'
           onClick={this.addToList.bind(this)}>
           Add to results
-        </a>
-        <a
-          href='#'
+        </button>
+        <button
           className='controls__btn'
           onClick={this.clearList.bind(this)}>
           Reset results
-        </a>
+        </button>
       </nav>
     );
   }
