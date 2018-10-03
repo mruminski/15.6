@@ -60,63 +60,73 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <Control />
-        <Stopwatch />
-        <ResultsList />        
+        <Control 
+          startAction={this.start.bind(this)}
+          stopAction={this.stop.bind(this)}
+          resetAction={this.reset.bind(this)}
+          addAction={this.addToList.bind(this)}
+          clearAction={this.clearList.bind(this)}/>
+        <Stopwatch time={this.format()}/>
+        <ResultsList list={this.state.results}/>
       </div>
     );
   }
 }
 
 class Control extends React.Component {
+  constructor() {
+    super();
+  }
   render() {
     return (
       <nav className='controls'>
-        <button
-          className='controls__btn'
-          onClick={this.start.bind(this)}>
-          Start
-        </button>
-        <button
-          className='controls__btn'
-          onClick={this.stop.bind(this)}>
-          Stop
-        </button>
-        <button
-          className='controls__btn'
-          onClick={this.reset.bind(this)}>
-          Reset timer
-        </button>
-        <button
-          className='controls__btn'
-          onClick={this.addToList.bind(this)}>
-          Add to results
-        </button>
-        <button
-          className='controls__btn'
-          onClick={this.clearList.bind(this)}>
-          Reset results
-        </button>
+      <Button name='Start' handleClick={this.props.startAction}/>
+      <Button name='Stop' handleClick={this.props.stopAction}/>
+      <Button name='Reset' handleClick={this.props.resetAction}/>
+      <Button name='Add to list' handleClick={this.props.addAction}/>
+      <Button name='Reset results' handleClick={this.props.clearAction}/>
       </nav>
     );
   }
 }
 
+class Button extends React.Component {
+  constructor() {
+    super();
+  }
+  render() {
+    return (
+      <button
+        className='controls__btn'
+        onClick={this.props.handleClick}>
+        {this.props.name}
+      </button>
+    )
+  }
+}
+
 class Stopwatch extends React.Component {
+  constructor() {
+    super();
+  }
   render() {
     return (
       <div className='stopwatch'>
-        {this.format()}
+        {this.props.time}
       </div>
     );
   }
 }
 
 class ResultsList extends React.Component {
+  constructor() {
+    super();
+  }
   render() {
     return (
       <ul className='results'>
-        {this.state.results.map(i => <li className='result'>{i}</li>)}
+        {(this.props.list.length > 0 ) &&
+          this.props.list.map(i => <li className='result'>{i}</li>)}
     </ul>
     );
   }
