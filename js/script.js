@@ -73,63 +73,37 @@ class App extends React.Component {
   }
 }
 
-class Control extends React.Component {
-  constructor() {
-    super();
-  }
-  render() {
-    return (
-      <nav className='controls'>
-      <Button name='Start' handleClick={this.props.startAction}/>
-      <Button name='Stop' handleClick={this.props.stopAction}/>
-      <Button name='Reset' handleClick={this.props.resetAction}/>
-      <Button name='Add to list' handleClick={this.props.addAction}/>
-      <Button name='Reset results' handleClick={this.props.clearAction}/>
-      </nav>
-    );
-  }
+const Control = ({startAction, stopAction, resetAction, addAction, clearAction}) => {
+  return (
+    <nav className='controls'>
+      <Button name='Start' handleClick={startAction}/>
+      <Button name='Stop' handleClick={stopAction}/>
+      <Button name='Reset' handleClick={resetAction}/>
+      <Button name='Add to list' handleClick={addAction}/>
+      <Button name='Reset results' handleClick={clearAction}/>
+    </nav>
+  );
 }
 
-class Button extends React.Component {
-  constructor() {
-    super();
-  }
-  render() {
-    return (
-      <button
-        className='controls__btn'
-        onClick={this.props.handleClick}>
-        {this.props.name}
-      </button>
-    )
-  }
+const Button = ({handleClick, name}) => {
+  return (
+    <button
+      className='controls__btn' 
+      onClick={handleClick}>
+        {name}
+    </button>
+  )
 }
+  
+const Stopwatch = ({time}) => <div className='stopwatch'>{time}</div>
 
-class Stopwatch extends React.Component {
-  constructor() {
-    super();
-  }
-  render() {
-    return (
-      <div className='stopwatch'>
-        {this.props.time}
-      </div>
-    );
-  }
-}
-
-class ResultsList extends React.Component {
-  constructor() {
-    super();
-  }
-  render() {
-    return (
-      <ul className='results'>
-        {(this.props.list.length > 0 ) &&
-          this.props.list.map(i => <li className='result'>{i}</li>)}
+const ResultsList = ({list}) => {
+  return (
+    <ul className='results'>
+      {(list.length > 0) &&
+       list.map(i => <li className='result'>{i}</li>)}
     </ul>
-    );
-  }
+  )
 }
 
 function pad0(val) {
