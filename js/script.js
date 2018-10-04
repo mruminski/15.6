@@ -73,38 +73,24 @@ class App extends React.Component {
   }
 }
 
-const Control = ({startAction, stopAction, resetAction, addAction, clearAction}) => {
-  return (
-    <nav className='controls'>
-      <Button name='Start' handleClick={startAction}/>
-      <Button name='Stop' handleClick={stopAction}/>
-      <Button name='Reset' handleClick={resetAction}/>
-      <Button name='Add to list' handleClick={addAction}/>
-      <Button name='Reset results' handleClick={clearAction}/>
-    </nav>
-  );
-}
+const Control = ({startAction, stopAction, resetAction, addAction, clearAction}) =>
+  (<nav className='controls'>
+    <Button name='Start' handleClick={startAction}/>
+    <Button name='Stop' handleClick={stopAction}/>
+    <Button name='Reset' handleClick={resetAction}/>
+    <Button name='Add to list' handleClick={addAction}/>
+    <Button name='Reset results' handleClick={clearAction}/>
+  </nav>);
 
-const Button = ({handleClick, name}) => {
-  return (
-    <button
-      className='controls__btn' 
-      onClick={handleClick}>
-        {name}
-    </button>
-  )
-}
+const Button = ({handleClick, name}) => 
+  (<button className='controls__btn' onClick={handleClick}> {name} </button>)
   
 const Stopwatch = ({time}) => <div className='stopwatch'>{time}</div>
 
-const ResultsList = ({list}) => {
-  return (
-    <ul className='results'>
-      {(list.length > 0) &&
-       list.map(i => <li className='result'>{i}</li>)}
-    </ul>
-  )
-}
+const ResultsList = ({list}) => 
+  (<ul className='results'>
+    {(list.length > 0) && list.map(i => <li className='result'>{i}</li>)}
+  </ul>)
 
 function pad0(val) {
   let result = val.toString();
