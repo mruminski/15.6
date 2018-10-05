@@ -83,13 +83,13 @@ const Control = ({startAction, stopAction, resetAction, addAction, clearAction})
   </nav>);
 
 const Button = ({handleClick, name}) => 
-  (<button className='controls__btn' onClick={handleClick}> {name} </button>)
+  (<button className='controls__btn' onClick={handleClick}> {name} </button>);
   
 const Stopwatch = ({time}) => <div className='stopwatch'>{time}</div>
 
 const ResultsList = ({list}) => 
   (<ul className='results'>
-    {(list.length > 0) && list.map(i => <li className='result'>{i}</li>)}
+    {(list.length > 0) && list.map(i => <li className='result'>{i}</li>)};
   </ul>)
 
 function pad0(val) {
